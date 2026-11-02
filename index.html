@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stödmedlem KBK P2015</title>
+<meta name="description" content="Bli stödmedlem i Kungsladugårds BK P2015. Välj belopp och vem du hejar på, så får du en färdig Swish-länk eller QR-kod.">
+<meta property="og:title" content="Bli stödmedlem i KBK P2015">
+<meta property="og:description" content="Stötta killarna i Kungsladugårds BK P2015 med en swish. Välj belopp, välj vem du hejar på, klart.">
+<meta property="og:image" content="https://8bitcat.github.io/kbk-p2015/bilder/laget.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://8bitcat.github.io/kbk-p2015/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="bilder/kbk.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: phone-first single column. Vinröd hero-band med klubbmärke och lagfoto,
+     sedan Swish-kortet (sidans arbetsyta), resultattavlan, spelartruppen som tröjor, sidfot. */
+  :root {
+    --maroon: #7c2938;        /* matchtröjan */
+    --maroon-deep: #4a1521;
+    --maroon-ink: #2a0d14;
+    --cuff: #a8323e;          /* ärmslutens ljusare röda */
+    --gold: #f49e0a;          /* klubbmärket */
+    --gold-deep: #c97d05;
+    --cream: #f7e2bc;         /* klubbmärket */
+    --bg: #faf6ee;
+    --surface: #ffffff;
+    --surface-2: #f3ebdd;
+    --fg: #2a1a1d;
+    --muted: #6f5a5f;
+    --line: #e4d8c6;
+    --focus: #1d6fd6;
+    --ok: #2f8f4e;
+    --font-display: "Bebas Neue", "Oswald", "Arial Narrow", Impact, sans-serif;
+    --font-body: "Barlow", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1a1013; --surface: #271619; --surface-2: #33201f;
+      --fg: #f4eadc; --muted: #c9b2b7; --line: #4a2f35;
+      --focus: #7fb3ff; --ok: #6cc98a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1a1013; --surface: #271619; --surface-2: #33201f;
+    --fg: #f4eadc; --muted: #c9b2b7; --line: #4a2f35;
+    --focus: #7fb3ff; --ok: #6cc98a;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: var(--font-body); font-size: 17px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: .02em; line-height: .95; margin: 0; text-wrap: balance; }
+  h2 { font-size: clamp(34px, 6vw, 48px); }
+  p { margin: 0; }
+  button, input, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+  .wrap {
+    max-width: 1040px; margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .section { padding-block: 40px 8px; display: grid; gap: 16px; }
+  .section-head { display: grid; gap: 6px; }
+  .section-head p { color: var(--muted); max-width: 60ch; }
+
+  /* ---------- Hero ---------- */
+  .hero { background: var(--maroon); color: var(--cream); background-image: linear-gradient(160deg, #8a2f3f 0%, var(--maroon) 45%, var(--maroon-deep) 100%); }
+  .hero .wrap { padding-block: 22px 28px; display: grid; gap: 22px; }
+  .club { display: flex; align-items: center; gap: 12px; }
+  .club img { width: 56px; height: auto; flex: none; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25)); }
+  .club .name { font-family: var(--font-display); font-size: 24px; line-height: 1; letter-spacing: .03em; color: #fff; }
+  .club .sub { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--cream); opacity: .85; }
+  .hero-grid { display: grid; gap: 22px; align-items: center; }
+  @media (min-width: 780px) { .hero-grid { grid-template-columns: 1fr 1.25fr; gap: 36px; } }
+  .hero h1 { font-size: clamp(56px, 11vw, 104px); color: #fff; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .lead { font-size: 19px; max-width: 46ch; color: var(--cream); }
+  .hero-text { display: grid; gap: 14px; min-width: 0; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 10px; width: fit-content; background: var(--gold); color: var(--maroon-ink); text-decoration: none; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 16px; }
+  .hero-cta:hover { background: #ffb02e; }
+  .hero-photo { margin: 0; position: relative; min-width: 0; }
+  .hero-photo img { width: 100%; height: auto; aspect-ratio: 1276 / 919; object-fit: cover; border-radius: 14px; border: 3px solid var(--cream); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+
+  /* ---------- Swish-kortet ---------- */
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+    padding: 20px; display: grid; gap: 22px; box-shadow: 0 10px 30px rgba(42,13,20,.08);
+  }
+  @media (min-width: 640px) { .card { padding: 28px; } }
+  .step { display: grid; gap: 10px; }
+  .step-label { display: flex; align-items: baseline; gap: 10px; }
+  .step-num { font-family: var(--font-display); font-size: 26px; line-height: 1; color: var(--gold-deep); min-width: 1.1em; }
+  .step-title { font-weight: 700; font-size: 18px; }
+  .step-hint { color: var(--muted); font-size: 14px; }
+
+  .amounts { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 8px; margin: 0; padding: 0; border: 0; }
+  .amounts legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .chip { position: relative; }
+  .chip input { position: absolute; inset: 0; z-index: 1; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .chip span {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+    min-height: 58px; border: 2px solid var(--line); border-radius: 12px; background: var(--surface-2);
+    font-family: var(--font-display); font-size: 26px; line-height: 1; letter-spacing: .02em;
+    transition: transform .12s ease, background .12s ease;
+  }
+  .chip span small { font-family: var(--font-body); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+  .chip input:checked + span { background: var(--gold); border-color: var(--gold); color: var(--maroon-ink); }
+  .chip input:checked + span small { color: var(--maroon-ink); }
+  .chip input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .chip:hover span { transform: translateY(-1px); }
+
+  .field { display: grid; gap: 6px; }
+  .control {
+    width: 100%; min-height: 50px; padding: 10px 14px; border: 2px solid var(--line); border-radius: 12px;
+    background: var(--surface-2); font-size: 17px;
+  }
+  select.control { appearance: none; -webkit-appearance: none; padding-right: 44px;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: calc(100% - 22px) 55%, calc(100% - 16px) 55%; background-size: 6px 6px; background-repeat: no-repeat; }
+  .msg-row { display: flex; gap: 8px; align-items: center; }
+  .msg-row .control { flex: 1; min-width: 0; }
+  .ghost { background: none; border: 2px solid var(--line); border-radius: 10px; padding: 8px 12px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+  .ghost:hover { border-color: var(--muted); color: var(--fg); }
+  .counter { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .pay { display: grid; gap: 16px; border-top: 1px solid var(--line); padding-top: 22px; }
+  @media (min-width: 720px) { .pay { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .pay-block { display: grid; gap: 10px; }
+  .pay-block h3 { font-size: 24px; }
+  .pay-block .how { color: var(--muted); font-size: 14px; }
+  .cta {
+    display: grid; justify-items: center; gap: 2px; text-decoration: none; text-align: center;
+    background: var(--maroon); color: #fff; border-radius: 14px; padding: 16px 18px;
+    border: 2px solid transparent; box-shadow: 0 8px 20px rgba(124,41,56,.35);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(124,41,56,.42); }
+  .cta:active { transform: translateY(0); }
+  .cta[aria-disabled="true"] { opacity: .55; pointer-events: none; box-shadow: none; }
+  .cta .big { font-family: var(--font-display); font-size: 34px; line-height: 1; letter-spacing: .03em; }
+  .cta .small { font-size: 13px; color: var(--cream); opacity: .9; }
+  .alt-link { font-size: 14px; color: var(--muted); }
+  .alt-link a { color: var(--fg); }
+
+  .qr-panel {
+    background: #fff; color: #1b0d10; border-radius: 14px; padding: 14px; display: grid; justify-items: center; gap: 8px;
+    border: 1px solid var(--line);
+  }
+  #qr { width: 220px; height: 220px; display: grid; place-items: center; }
+  #qr img, #qr canvas { width: 220px !important; height: 220px !important; image-rendering: pixelated; }
+  .qr-number { font-family: var(--font-display); font-size: 28px; letter-spacing: .06em; line-height: 1; }
+  .qr-sum { font-size: 14px; color: #5a4a4e; text-align: center; max-width: 30ch; }
+  .copy-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .copy-btn { background: var(--surface-2); color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 14px; font-weight: 600; }
+  .qr-panel .copy-btn { background: #f3ebdd; color: #2a1a1d; border-color: #e4d8c6; }
+  .copy-btn[data-done="1"] { color: var(--ok); }
+  .pay.mobile .qr-block { order: 2; } .pay.mobile .link-block { order: 1; }
+  .pay.desktop .qr-block { order: 1; } .pay.desktop .link-block { order: 2; }
+
+  /* ---------- Resultattavlan ---------- */
+  .board {
+    background: var(--maroon-ink); color: var(--cream); border-radius: 18px; padding: 24px 20px;
+    display: grid; gap: 24px; border: 1px solid rgba(247,226,188,.14);
+    background-image: radial-gradient(120% 90% at 0% 0%, rgba(244,158,10,.2), transparent 55%);
+  }
+  @media (min-width: 720px) { .board { grid-template-columns: 1fr 1.2fr; gap: 36px; padding: 32px; align-items: center; } }
+  .board-total { display: grid; gap: 6px; min-width: 0; }
+  .board-label { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .board-sum { font-family: var(--font-display); font-size: clamp(72px, 17vw, 128px); line-height: .9; color: #fff; letter-spacing: .02em; }
+  .board-sub { font-size: 15px; color: var(--cream); opacity: .85; }
+  .board-list { display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .board-rows { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .board-row { display: grid; gap: 3px; justify-items: center; min-width: 92px; padding: 10px 14px; border-radius: 10px; background: rgba(247,226,188,.08); border: 1px solid rgba(247,226,188,.2); }
+  .board-amt { font-family: var(--font-display); font-size: 30px; line-height: 1; letter-spacing: .04em; color: #fff; }
+  .board-row small { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--cream); opacity: .8; }
+  .board-goal { grid-column: 1 / -1; display: grid; gap: 10px; }
+  .meter { height: 16px; background: rgba(247,226,188,.14); border-radius: 0 4px 4px 0; }
+  .meter-fill { height: 100%; width: var(--w); background: var(--gold); border-radius: 0 4px 4px 0; transform-origin: left; }
+  .board-goal-text { font-size: 15px; color: var(--cream); }
+  .board-goal-text strong { color: #fff; font-weight: 700; }
+  .board.is-in .meter-fill { animation: grow 1.1s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  /* ---------- Truppen ---------- */
+  .roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 10px; }
+  .shirt {
+    position: relative; display: grid; grid-template-rows: 6px 1fr auto; justify-items: center; align-items: center;
+    aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; border: 2px solid transparent;
+    background: var(--maroon); color: #fff; cursor: pointer; padding: 0 4px 8px; text-align: center;
+    transition: transform .12s ease, border-color .12s ease;
+  }
+  .shirt::before { content: ""; grid-row: 1; width: 100%; height: 6px; background: var(--cuff); display: block; justify-self: stretch; }
+  .shirt .nr { font-family: var(--font-display); font-size: 46px; line-height: 1; letter-spacing: .02em; }
+  .shirt .nr-name { font-size: 21px; letter-spacing: .03em; padding-top: 4px; max-width: 100%; }
+  .shirt .nm { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cream); }
+  .shirt:hover { transform: translateY(-2px); }
+  .shirt[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(244,158,10,.35); }
+  .shirt[aria-pressed="true"] .nr { color: var(--gold); }
+  .shirt.team { background: var(--maroon-deep); }
+  .shirt.team img { width: 40px; height: auto; }
+  .roster-note { color: var(--muted); font-size: 14px; }
+
+  /* ---------- Info + sidfot ---------- */
+  .info { display: grid; gap: 16px; }
+  @media (min-width: 720px) { .info { grid-template-columns: 1fr 1fr; } }
+  .info-box { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 8px; align-content: start; }
+  .info-box h3 { font-size: 26px; }
+  .info-box p { color: var(--muted); font-size: 15px; }
+  .share-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  footer { margin-top: 40px; background: var(--maroon-ink); color: var(--cream); }
+  footer .wrap { padding-block: 26px 30px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; font-size: 14px; }
+  footer img { width: 40px; height: auto; }
+  footer a { color: var(--gold); }
+  footer .muted { opacity: .75; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="club">
+      <img src="bilder/kbk.png" alt="Kungsladugårds BK:s klubbmärke" width="200" height="216">
+      <div>
+        <div class="name">Kungsladugårds BK</div>
+        <div class="sub">Pojkar födda 2015 · Göteborg</div>
+      </div>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>Bli stöd&shy;medlem <em>i KBK P2015</em></h1>
+        <p class="lead">Stötta killarna med en swish. Välj belopp, välj vem du hejar på, så är numret, summan och meddelandet redan ifyllda.</p>
+        <a class="hero-cta" href="#swisha">Swisha ditt stöd ↓</a>
+      </div>
+      <figure class="hero-photo">
+        <img src="bilder/laget.jpg" alt="Laget KBK P2015 med ledare uppställda i matchställ under träden" width="1276" height="919">
+      </figure>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="swisha">
+    <div class="section-head">
+      <span class="eyebrow">Så här gör du</span>
+      <h2>Swisha ditt stöd</h2>
+      <p>Tre val, sedan en tryckning i mobilen eller en skanning från datorn. Pengarna går till lagkassan för KBK P2015.</p>
+    </div>
+
+    <div class="card">
+      <div class="step">
+        <div class="step-label"><span class="step-num">1</span><span class="step-title">Välj belopp</span></div>
+        <fieldset class="amounts" id="amounts">
+          <legend>Belopp</legend>
+          <label class="chip"><input type="radio" name="amount" value="25" id="amt-25"><span>25<small>kr</small></span></label>
+          <label class="chip"><input type="radio" name="amount" value="50" id="amt-50"><span>50<small>kr</small></span></label>
+          <label class="chip"><input type="radio" name="amount" value="100" id="amt-100" checked><span>100<small>kr</small></span></label>
+          <label class="chip"><input type="radio" name="amount" value="250" id="amt-250"><span>250<small>kr</small></span></label>
+          <label class="chip"><input type="radio" name="amount" value="500" id="amt-500"><span>500<small>kr</small></span></label>
+          <label class="chip"><input type="radio" name="amount" value="custom" id="amt-custom"><span>Eget<small>belopp</small></span></label>
+        </fieldset>
+        <div class="field" id="customRow" hidden>
+          <input class="control" id="customAmt" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="Skriv belopp i kronor" aria-label="Eget belopp i kronor">
+          <span class="counter">Hela kronor, 1 till 150 000. Knappen och QR-koden följer med medan du skriver.</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-label"><span class="step-num">2</span><span class="step-title">Vem hejar du på?</span><span class="step-hint">Hela laget eller en spelare</span></div>
+        <div class="field">
+          <select class="control" id="who" aria-label="Vem hejar du på?"></select>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-label"><span class="step-num">3</span><span class="step-title">Meddelande i Swish</span><span class="step-hint">Fylls i åt dig, går att ändra</span></div>
+        <div class="field">
+          <div class="msg-row">
+            <input class="control" id="msg" type="text" maxlength="50" autocomplete="off" spellcheck="false" aria-label="Meddelande i Swish">
+            <button class="ghost" type="button" id="msgReset">Återställ</button>
+          </div>
+          <span class="counter"><span id="msgLen">0</span>/50 tecken · bokstäver, siffror och utropstecken fungerar säkrast i Swish</span>
+        </div>
+      </div>
+
+      <div class="pay" id="pay">
+        <div class="pay-block link-block">
+          <h3>På mobilen</h3>
+          <a class="cta" id="payLink" href="#">
+            <span class="big" id="ctaText">Swisha 100 kr</span>
+            <span class="small">Öppnar Swish med nummer, belopp och meddelande ifyllt</span>
+          </a>
+          <p class="how">Du bekräftar som vanligt i Swish-appen. Inget dras förrän du godkänt.</p>
+          <p class="alt-link">Öppnades inte Swish? <a id="altLink" href="#">Prova den här länken i stället</a>.</p>
+        </div>
+        <div class="pay-block qr-block">
+          <h3>På datorn</h3>
+          <div class="qr-panel">
+            <div id="qr" aria-label="QR-kod för Swish-betalning"></div>
+            <div class="qr-number">0761-808 013</div>
+            <p class="qr-sum" id="qrSum">100 kr · Heja KBK P2015!</p>
+            <div class="copy-row">
+              <button class="copy-btn" type="button" id="copyNr" data-copy="0761808013">Kopiera numret</button>
+            </div>
+          </div>
+          <p class="how">Rikta mobilkameran eller Swish-appens skanner mot koden, så öppnas betalningen färdigifylld.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="insamlat">
+    <div class="section-head">
+      <span class="eyebrow">Tack till er som redan swishat</span>
+      <h2>Insamlat hittills</h2>
+      <p id="goalLeadRow">Målet är <strong id="goalLead">25 000 kr</strong>. Varje swish räknas, och tavlan uppdateras när nya bidrag kommer in.</p>
+    </div>
+    <div class="board" id="board">
+      <div class="board-total">
+        <span class="board-label">Totalt i lagkassan</span>
+        <span class="board-sum"><span id="totalSum">0</span> kr</span>
+        <span class="board-sub"><span id="totalCount">0 stödmedlemmar</span> · uppdaterad <span id="totalDate">2 november 2026</span></span>
+      </div>
+      <div class="board-list">
+        <span class="board-label">Inbetalningar</span>
+        <ol class="board-rows" id="boardRows" aria-label="Inbetalningar som kommit in"></ol>
+      </div>
+      <div class="board-goal" id="boardGoal">
+        <div class="meter" id="meter" role="progressbar" aria-label="Insamlat av målet" aria-valuemin="0" aria-valuemax="25000" aria-valuenow="0"><div class="meter-fill" id="meterFill" style="--w:0%"></div></div>
+        <div class="board-goal-text"><strong id="goalPct">0 %</strong> av målet <strong id="goalSum">25 000 kr</strong> · <span id="goalLeft">25 000 kr kvar</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="truppen">
+    <div class="section-head">
+      <span class="eyebrow">Truppen</span>
+      <h2>Killarna i P2015</h2>
+      <p>Tryck på en tröja för att heja på just honom. Namnet följer med i meddelandet, så laget ser vem stödet gäller.</p>
+    </div>
+    <div class="roster" id="roster" role="group" aria-label="Välj spelare"></div>
+    <p class="roster-note">Två spelare heter Gabriel, därför står efternamnets första bokstav med. Mottagaren är alltid lagets gemensamma Swish, oavsett vem du hejar på.</p>
+  </section>
+
+  <section class="section" id="info">
+    <div class="info">
+      <div class="info-box">
+        <h3>Vart går pengarna?</h3>
+        <p>Allt stöd går till lagkassan för Kungsladugårds BK P2015 och används till laget: cuper, material och gemensamma aktiviteter för killarna.</p>
+        <p>Mottagare i Swish: <strong>0761-808 013</strong> (KBK P2015).</p>
+      </div>
+      <div class="info-box">
+        <h3>Tipsa fler</h3>
+        <p>Skicka sidan till mormor, grannen eller jobbet. Alla som vill kan bli stödmedlemmar, oavsett belopp.</p>
+        <div class="share-row">
+          <button class="copy-btn" type="button" id="copyUrl">Kopiera länken till sidan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="bilder/kbk.png" alt="" width="200" height="216">
+    <span>Kungsladugårds BK · Apelsinplan, Västra Frölunda</span>
+    <a href="https://www.kungsladugardsbk.se/kungsladugardsbk-pojkar-15" target="_blank" rel="noopener">Lagets sida på kungsladugardsbk.se</a>
+    <span class="muted">Stödmedlemssida för P2015. Mottagare: 0761-808 013.</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  const SWISH_NR = '0761808013';
+  const LAG = 'P2015';
+  const TEAM_MSG = 'Heja KBK P2015! Stodmedlem';
+  // Förnamn + tröjnummer (null = inget nummer). Lägg till eller ändra här.
+  const SPELARE = [
+    [null, 'Adam'], [null, 'Albin'], [null, 'Alexander'], [null, 'Alfred'], [null, 'Elion'], [null, 'Ellis'],
+    [null, 'Emilio'], [null, 'Fred'], [null, 'Gabriel B.'], [null, 'Gabriel J.'], [null, 'Gunnar'], [null, 'Gustav'],
+    [null, 'Hugo'], [null, 'Isak'], [null, 'Jacob'], [null, 'Jakob'], [null, 'Joel'], [null, 'Jonah'],
+    [null, 'Jonathan'], [null, 'Ledion'], [null, 'Lennox'], [null, 'Maher'], [null, 'Nils'], [null, 'Noah'],
+    [null, 'Simon'], [null, 'Tin'], [null, 'Walter'], [null, 'Yosef']
+  ].map(([nr, name]) => ({ nr: nr, name: name, id: nr === null ? name : String(nr) }))
+   .sort((a, b) => (a.nr === null) - (b.nr === null) || (a.nr || 0) - (b.nr || 0) || a.name.localeCompare(b.name, 'sv'));
+
+  const $ = (id) => document.getElementById(id);
+  const who = $('who'), msg = $('msg'), roster = $('roster');
+  const state = { amount: 100, player: null };
+  const sv = (n, d) => n.toLocaleString('sv-SE', { maximumFractionDigits: d || 0 });
+
+  // Swish tillåter a–ö, siffror, mellanslag och enkel interpunktion i meddelandet (max 50 tecken).
+  function sanitize(s) {
+    return s.replace(/[^A-Za-z0-9ÅÄÖåäöÉéÜü .,!?()-]/g, '').replace(/\s+/g, ' ').slice(0, 50);
+  }
+  function defaultMsg() {
+    const p = state.player;
+    if (!p) return TEAM_MSG;
+    return 'Heja ' + p.name + (p.nr === null ? '' : ' ' + p.nr) + '! Stodmedlem ' + LAG;
+  }
+  function appUrl(amount, message) {
+    // Swish egna länkformat (developer.swish.nu, "Generate QR codes"): sw, amt, msg. Utan edit är fälten låsta.
+    return 'https://app.swish.nu/1/p/sw/?sw=' + SWISH_NR + '&amt=' + amount + '&msg=' + encodeURIComponent(message) + '&src=qr';
+  }
+  function schemeUrl(amount, message) {
+    const data = { version: 1, payee: { value: SWISH_NR, editable: false }, amount: { value: amount, editable: false }, message: { value: message, editable: false } };
+    return 'swish://payment?data=' + encodeURIComponent(JSON.stringify(data));
+  }
+
+  // --- rullist
+  const optTeam = document.createElement('option');
+  optTeam.value = ''; optTeam.textContent = 'Hela laget KBK ' + LAG;
+  who.appendChild(optTeam);
+  SPELARE.forEach((p) => {
+    const o = document.createElement('option');
+    o.value = p.id; o.textContent = p.nr === null ? p.name : p.name + ' · nr ' + p.nr;
+    who.appendChild(o);
+  });
+
+  // --- tröjor
+  function shirt(p) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'shirt'; b.dataset.id = p ? p.id : '';
+    b.setAttribute('aria-pressed', 'false');
+    if (!p) {
+      b.classList.add('team');
+      b.innerHTML = '<span></span><img src="bilder/kbk.png" alt=""><span class="nm">Hela laget</span>';
+    } else if (p.nr === null) {
+      b.innerHTML = '<span></span><span class="nr nr-name">' + p.name + '</span><span class="nm">' + LAG + '</span>';
+    } else {
+      b.innerHTML = '<span></span><span class="nr">' + p.nr + '</span><span class="nm">' + p.name + '</span>';
+    }
+    b.addEventListener('click', () => { setPlayer(b.dataset.id); msg.value = defaultMsg(); update(); who.focus({ preventScroll: true }); });
+    return b;
+  }
+  roster.appendChild(shirt(null));
+  SPELARE.forEach((p) => roster.appendChild(shirt(p)));
+
+  function setPlayer(id) {
+    const hit = SPELARE.find((p) => p.id === id) || null;
+    state.player = hit;
+    who.value = hit ? hit.id : '';
+    roster.querySelectorAll('.shirt').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.id === (hit ? hit.id : ''))));
+  }
+
+  // --- QR
+  let qr = null;
+  function renderQr(text) {
+    if (typeof QRCode === 'undefined') { $('qr').textContent = 'QR-koden kunde inte ritas. Använd numret nedan.'; return; }
+    if (!qr) {
+      qr = new QRCode($('qr'), { text: text, width: 220, height: 220, colorDark: '#1b0d10', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+    } else {
+      qr.makeCode(text);
+    }
+  }
+
+  function update() {
+    const clean = sanitize(msg.value);
+    if (clean !== msg.value) msg.value = clean;
+    const message = clean || defaultMsg();
+    $('msgLen').textContent = String(clean.length);
+    const amount = state.amount, ok = amount !== null;
+    const link = $('payLink');
+    link.href = ok ? appUrl(amount, message) : '#';
+    link.setAttribute('aria-disabled', String(!ok));
+    $('altLink').href = ok ? schemeUrl(amount, message) : '#';
+    $('ctaText').textContent = ok ? 'Swisha ' + sv(amount) + ' kr' : 'Skriv ett belopp';
+    $('qrSum').textContent = ok ? sv(amount) + ' kr · ' + message : 'Skriv ett belopp, så ritas koden om';
+    $('qr').style.opacity = ok ? '' : '.2';
+    if (ok) renderQr(appUrl(amount, message));
+  }
+
+  // --- händelser
+  const customAmt = $('customAmt'), customRow = $('customRow');
+  function readCustom() {
+    const v = parseInt(customAmt.value.replace(/\D/g, ''), 10);
+    return (v >= 1 && v <= 150000) ? v : null;
+  }
+  $('amounts').addEventListener('change', (e) => {
+    if (e.target.name !== 'amount') return;
+    if (e.target.value === 'custom') {
+      customRow.hidden = false; state.amount = readCustom(); update(); customAmt.focus();
+    } else {
+      customRow.hidden = true; state.amount = Number(e.target.value); update();
+    }
+  });
+  customAmt.addEventListener('input', () => {
+    const digits = customAmt.value.replace(/\D/g, '').slice(0, 6);
+    if (digits !== customAmt.value) customAmt.value = digits;
+    $('amt-custom').checked = true; state.amount = readCustom(); update();
+  });
+  who.addEventListener('change', () => { setPlayer(who.value); msg.value = defaultMsg(); update(); });
+  msg.addEventListener('input', update);
+  $('msgReset').addEventListener('click', () => { msg.value = defaultMsg(); update(); msg.focus(); });
+
+  function copyText(btn, text, doneLabel) {
+    const orig = btn.dataset.orig || (btn.dataset.orig = btn.textContent);
+    const done = () => { btn.textContent = doneLabel; btn.dataset.done = '1'; setTimeout(() => { btn.textContent = orig; btn.dataset.done = ''; }, 1800); };
+    const fallback = () => {
+      const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (_) { btn.textContent = text; }
+      document.body.removeChild(ta);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+  }
+  $('copyNr').addEventListener('click', (e) => copyText(e.currentTarget, SWISH_NR, 'Kopierat: 0761-808 013'));
+  $('copyUrl').addEventListener('click', (e) => copyText(e.currentTarget, location.href.split('#')[0], 'Länken är kopierad'));
+
+  // --- resultattavlan: inbetalningar som kommit in. Uppdatera listan, målet och datumet för hand.
+  // Tom lista = hela sektionen döljs. MAL = null döljer mätaren.
+  const INBETALNINGAR = [];
+  const MAL = null;
+  const UPPDATERAD = '2 november 2026';
+  const total = INBETALNINGAR.reduce((a, b) => a + b, 0);
+  if (INBETALNINGAR.length === 0) {
+    $('insamlat').hidden = true;
+  } else {
+    INBETALNINGAR.forEach((kr) => {
+      const li = document.createElement('li'); li.className = 'board-row';
+      li.innerHTML = '<span class="board-amt">' + sv(kr) + ' kr</span><small>Stödmedlem</small>';
+      $('boardRows').appendChild(li);
+    });
+    $('totalSum').textContent = sv(total);
+    $('totalCount').textContent = INBETALNINGAR.length + (INBETALNINGAR.length === 1 ? ' stödmedlem' : ' stödmedlemmar');
+    $('totalDate').textContent = UPPDATERAD;
+    if (MAL) {
+      const pct = Math.min(100, total / MAL * 100);
+      $('meterFill').style.setProperty('--w', pct + '%');
+      $('meter').setAttribute('aria-valuemax', String(MAL)); $('meter').setAttribute('aria-valuenow', String(Math.min(total, MAL)));
+      $('goalPct').textContent = sv(pct, 1) + ' %';
+      $('goalSum').textContent = sv(MAL) + ' kr'; $('goalLead').textContent = sv(MAL) + ' kr';
+      $('goalLeft').textContent = total >= MAL ? 'Målet är nått!' : sv(MAL - total) + ' kr kvar';
+    } else {
+      $('boardGoal').hidden = true; $('goalLeadRow').hidden = true;
+    }
+    // Räkna upp totalen och låt mätaren växa när tavlan rullas fram. Hoppas över vid reducerad rörelse.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        io.disconnect();
+        $('board').classList.add('is-in');
+        const start = performance.now(), dur = 1100;
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - t, 3);
+          $('totalSum').textContent = sv(Math.round(total * e));
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, { threshold: 0.4 });
+      io.observe($('board'));
+    }
+  }
+
+  // --- mobil eller dator: avgör vilken väg som visas först
+  const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (matchMedia('(pointer: coarse)').matches && matchMedia('(max-width: 900px)').matches);
+  $('pay').classList.add(mobile ? 'mobile' : 'desktop');
+
+  // --- start: 100 kr, hela laget
+  setPlayer('');
+  msg.value = defaultMsg();
+  update();
+})();
+</script>
+
+</body>
+</html>
