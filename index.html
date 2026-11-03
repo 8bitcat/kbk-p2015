@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Stödmedlem KBK P2015</title>
-<meta name="description" content="Bli stödmedlem i Kungsladugårds BK P2015. Välj belopp och vem du hejar på, så får du en färdig Swish-länk eller QR-kod.">
+<meta name="description" content="Bli stödmedlem i Kungsladugårds BK P2015. Välj belopp, så får du en färdig Swish-länk eller QR-kod. Allt går till hela laget.">
 <meta property="og:title" content="Bli stödmedlem i KBK P2015">
-<meta property="og:description" content="Stötta killarna i Kungsladugårds BK P2015 med en swish. Välj belopp, välj vem du hejar på, klart.">
+<meta property="og:description" content="Stötta hela laget i Kungsladugårds BK P2015 med en swish. Välj belopp, klart.">
 <meta property="og:image" content="https://8bitcat.github.io/kbk-p2015/bilder/laget.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://8bitcat.github.io/kbk-p2015/">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
   /* Layout: phone-first single column. Vinröd hero-band med klubbmärke och lagfoto,
-     sedan Swish-kortet (sidans arbetsyta), resultattavlan, spelartruppen som tröjor, sidfot. */
+     sedan Swish-kortet (sidans arbetsyta), resultattavlan, info, sidfot. Allt stöd går till hela laget. */
   :root {
     --maroon: #7c2938;        /* matchtröjan */
     --maroon-deep: #4a1521;
@@ -127,9 +127,6 @@
     width: 100%; min-height: 50px; padding: 10px 14px; border: 2px solid var(--line); border-radius: 12px;
     background: var(--surface-2); font-size: 17px;
   }
-  select.control { appearance: none; -webkit-appearance: none; padding-right: 44px;
-    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
-    background-position: calc(100% - 22px) 55%, calc(100% - 16px) 55%; background-size: 6px 6px; background-repeat: no-repeat; }
   .msg-row { display: flex; gap: 8px; align-items: center; }
   .msg-row .control { flex: 1; min-width: 0; }
   .ghost { background: none; border: 2px solid var(--line); border-radius: 10px; padding: 8px 12px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); white-space: nowrap; }
@@ -194,25 +191,6 @@
   .board.is-in .meter-fill { animation: grow 1.1s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
-  /* ---------- Truppen ---------- */
-  .roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 10px; }
-  .shirt {
-    position: relative; display: grid; grid-template-rows: 6px 1fr auto; justify-items: center; align-items: center;
-    aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; border: 2px solid transparent;
-    background: var(--maroon); color: #fff; cursor: pointer; padding: 0 4px 8px; text-align: center;
-    transition: transform .12s ease, border-color .12s ease;
-  }
-  .shirt::before { content: ""; grid-row: 1; width: 100%; height: 6px; background: var(--cuff); display: block; justify-self: stretch; }
-  .shirt .nr { font-family: var(--font-display); font-size: 46px; line-height: 1; letter-spacing: .02em; }
-  .shirt .nr-name { font-size: 21px; letter-spacing: .03em; padding-top: 4px; max-width: 100%; }
-  .shirt .nm { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cream); }
-  .shirt:hover { transform: translateY(-2px); }
-  .shirt[aria-pressed="true"] { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(244,158,10,.35); }
-  .shirt[aria-pressed="true"] .nr { color: var(--gold); }
-  .shirt.team { background: var(--maroon-deep); }
-  .shirt.team img { width: 40px; height: auto; }
-  .roster-note { color: var(--muted); font-size: 14px; }
-
   /* ---------- Info + sidfot ---------- */
   .info { display: grid; gap: 16px; }
   @media (min-width: 720px) { .info { grid-template-columns: 1fr 1fr; } }
@@ -244,7 +222,7 @@
     <div class="hero-grid">
       <div class="hero-text">
         <h1>Bli stöd&shy;medlem <em>i KBK P2015</em></h1>
-        <p class="lead">Stötta killarna med en swish. Välj belopp, välj vem du hejar på, så är numret, summan och meddelandet redan ifyllda.</p>
+        <p class="lead">Stötta hela laget med en swish. Välj belopp, så är numret, summan och meddelandet redan ifyllda.</p>
         <a class="hero-cta" href="#swisha">Swisha ditt stöd ↓</a>
       </div>
       <figure class="hero-photo">
@@ -260,7 +238,7 @@
     <div class="section-head">
       <span class="eyebrow">Så här gör du</span>
       <h2>Swisha ditt stöd</h2>
-      <p>Tre val, sedan en tryckning i mobilen eller en skanning från datorn. Pengarna går till lagkassan för KBK P2015.</p>
+      <p>Välj belopp, sedan en tryckning i mobilen eller en skanning från datorn. Pengarna går till lagkassan och kommer hela laget till nytta.</p>
     </div>
 
     <div class="card">
@@ -282,14 +260,7 @@
       </div>
 
       <div class="step">
-        <div class="step-label"><span class="step-num">2</span><span class="step-title">Vem hejar du på?</span><span class="step-hint">Hela laget eller en spelare</span></div>
-        <div class="field">
-          <select class="control" id="who" aria-label="Vem hejar du på?"></select>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-label"><span class="step-num">3</span><span class="step-title">Meddelande i Swish</span><span class="step-hint">Fylls i åt dig, går att ändra</span></div>
+        <div class="step-label"><span class="step-num">2</span><span class="step-title">Meddelande i Swish</span><span class="step-hint">Fylls i åt dig, går att ändra</span></div>
         <div class="field">
           <div class="msg-row">
             <input class="control" id="msg" type="text" maxlength="50" autocomplete="off" spellcheck="false" aria-label="Meddelande i Swish">
@@ -348,21 +319,11 @@
     </div>
   </section>
 
-  <section class="section" id="truppen">
-    <div class="section-head">
-      <span class="eyebrow">Truppen</span>
-      <h2>Killarna i P2015</h2>
-      <p>Tryck på en tröja för att heja på just honom. Namnet följer med i meddelandet, så laget ser vem stödet gäller.</p>
-    </div>
-    <div class="roster" id="roster" role="group" aria-label="Välj spelare"></div>
-    <p class="roster-note">Två spelare heter Gabriel, därför står efternamnets första bokstav med. Mottagaren är alltid lagets gemensamma Swish, oavsett vem du hejar på.</p>
-  </section>
-
   <section class="section" id="info">
     <div class="info">
       <div class="info-box">
         <h3>Vart går pengarna?</h3>
-        <p>Allt stöd går till lagkassan för Kungsladugårds BK P2015 och används till laget: cuper, material och gemensamma aktiviteter för killarna.</p>
+        <p>Allt stöd går till lagkassan för Kungsladugårds BK P2015 och används till hela laget: cuper, material och gemensamma aktiviteter för killarna.</p>
         <p>Mottagare i Swish: <strong>0761-808 013</strong> (KBK P2015).</p>
       </div>
       <div class="info-box">
@@ -389,32 +350,19 @@
 <script>
 (function () {
   const SWISH_NR = '0761808013';
-  const LAG = 'P2015';
+  // Allt stöd går till hela laget (Carl 2026-11-03): inget val av spelare.
   const TEAM_MSG = 'Heja KBK P2015! Stodmedlem';
-  // Förnamn + tröjnummer (null = inget nummer). Lägg till eller ändra här.
-  const SPELARE = [
-    [null, 'Adam'], [null, 'Albin'], [null, 'Alexander'], [null, 'Alfred'], [null, 'Elion'], [null, 'Ellis'],
-    [null, 'Emilio'], [null, 'Fred'], [null, 'Gabriel B.'], [null, 'Gabriel J.'], [null, 'Gunnar'], [null, 'Gustav'],
-    [null, 'Hugo'], [null, 'Isak'], [null, 'Jacob'], [null, 'Jakob'], [null, 'Joel'], [null, 'Jonah'],
-    [null, 'Jonathan'], [null, 'Ledion'], [null, 'Lennox'], [null, 'Maher'], [null, 'Nils'], [null, 'Noah'],
-    [null, 'Simon'], [null, 'Tin'], [null, 'Walter'], [null, 'Yosef']
-  ].map(([nr, name]) => ({ nr: nr, name: name, id: nr === null ? name : String(nr) }))
-   .sort((a, b) => (a.nr === null) - (b.nr === null) || (a.nr || 0) - (b.nr || 0) || a.name.localeCompare(b.name, 'sv'));
 
   const $ = (id) => document.getElementById(id);
-  const who = $('who'), msg = $('msg'), roster = $('roster');
-  const state = { amount: 100, player: null };
+  const msg = $('msg');
+  const state = { amount: 100 };
   const sv = (n, d) => n.toLocaleString('sv-SE', { maximumFractionDigits: d || 0 });
 
   // Swish tillåter a–ö, siffror, mellanslag och enkel interpunktion i meddelandet (max 50 tecken).
   function sanitize(s) {
     return s.replace(/[^A-Za-z0-9ÅÄÖåäöÉéÜü .,!?()-]/g, '').replace(/\s+/g, ' ').slice(0, 50);
   }
-  function defaultMsg() {
-    const p = state.player;
-    if (!p) return TEAM_MSG;
-    return 'Heja ' + p.name + (p.nr === null ? '' : ' ' + p.nr) + '! Stodmedlem ' + LAG;
-  }
+  function defaultMsg() { return TEAM_MSG; }
   function appUrl(amount, message) {
     // Swish egna länkformat (developer.swish.nu, "Generate QR codes"): sw, amt, msg. Utan edit är fälten låsta.
     return 'https://app.swish.nu/1/p/sw/?sw=' + SWISH_NR + '&amt=' + amount + '&msg=' + encodeURIComponent(message) + '&src=qr';
@@ -422,42 +370,6 @@
   function schemeUrl(amount, message) {
     const data = { version: 1, payee: { value: SWISH_NR, editable: false }, amount: { value: amount, editable: false }, message: { value: message, editable: false } };
     return 'swish://payment?data=' + encodeURIComponent(JSON.stringify(data));
-  }
-
-  // --- rullist
-  const optTeam = document.createElement('option');
-  optTeam.value = ''; optTeam.textContent = 'Hela laget KBK ' + LAG;
-  who.appendChild(optTeam);
-  SPELARE.forEach((p) => {
-    const o = document.createElement('option');
-    o.value = p.id; o.textContent = p.nr === null ? p.name : p.name + ' · nr ' + p.nr;
-    who.appendChild(o);
-  });
-
-  // --- tröjor
-  function shirt(p) {
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'shirt'; b.dataset.id = p ? p.id : '';
-    b.setAttribute('aria-pressed', 'false');
-    if (!p) {
-      b.classList.add('team');
-      b.innerHTML = '<span></span><img src="bilder/kbk.png" alt=""><span class="nm">Hela laget</span>';
-    } else if (p.nr === null) {
-      b.innerHTML = '<span></span><span class="nr nr-name">' + p.name + '</span><span class="nm">' + LAG + '</span>';
-    } else {
-      b.innerHTML = '<span></span><span class="nr">' + p.nr + '</span><span class="nm">' + p.name + '</span>';
-    }
-    b.addEventListener('click', () => { setPlayer(b.dataset.id); msg.value = defaultMsg(); update(); who.focus({ preventScroll: true }); });
-    return b;
-  }
-  roster.appendChild(shirt(null));
-  SPELARE.forEach((p) => roster.appendChild(shirt(p)));
-
-  function setPlayer(id) {
-    const hit = SPELARE.find((p) => p.id === id) || null;
-    state.player = hit;
-    who.value = hit ? hit.id : '';
-    roster.querySelectorAll('.shirt').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.id === (hit ? hit.id : ''))));
   }
 
   // --- QR
@@ -506,7 +418,6 @@
     if (digits !== customAmt.value) customAmt.value = digits;
     $('amt-custom').checked = true; state.amount = readCustom(); update();
   });
-  who.addEventListener('change', () => { setPlayer(who.value); msg.value = defaultMsg(); update(); });
   msg.addEventListener('input', update);
   $('msgReset').addEventListener('click', () => { msg.value = defaultMsg(); update(); msg.focus(); });
 
@@ -576,7 +487,6 @@
   $('pay').classList.add(mobile ? 'mobile' : 'desktop');
 
   // --- start: 100 kr, hela laget
-  setPlayer('');
   msg.value = defaultMsg();
   update();
 })();
